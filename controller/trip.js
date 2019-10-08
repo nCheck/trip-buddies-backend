@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Bill = mongoose.model('Bill');
 const Trip = mongoose.model('Trip');
-
+const Places = require('../data/places');
 
 
 
@@ -54,3 +54,35 @@ module.exports.getTrips = ( req , res )=>{
     });
 
 };
+
+
+
+module.exports.recommendPlace = ( req , res )=>{
+
+    var recs = req.body.filters;
+    var matches = []
+
+    matcher = (plc , rec) => {
+
+        for ( var r of rec ){
+            if ( plc.some( (p) => { return p == r } ) )
+            return true;
+        }
+
+        return false;
+
+    }
+
+    Places.forEach( (place) =>{
+
+        if ( matcher(place.tags, recs) )
+        {
+            matches.push(place);
+            console.log("matches currently", matches)
+        }
+
+    })
+
+    res.send( { data : matches } );
+
+}
