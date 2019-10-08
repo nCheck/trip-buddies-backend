@@ -86,12 +86,24 @@ module.exports.acceptRequest = ( req , res )=>{
 
 };
 
+module.exports.rejectRequest = ( req , res )=>{
+
+    var username = req.params.username;
+    var tripid = req.params.tripid;
+
+    User.updateOne({username} , { $pull : { requests : tripid } })
+        .then( (doc)=>{ res.send( { status : "success" , data : doc } ); } )
+        .catch( (err) => { res.send({ status : "error" , data : err }); } );
+
+};
+
+
 module.exports.verifyUser = ( req , res ) =>{
 
     var username = req.params.username;
     var password = req.params.password;
 
-    User.findOne({username}).populate('trips').exec( (err , doc)=>{
+    User.findOne({username}).populate('trips').populate('requests').exec( (err , doc)=>{
 
         if ( err || doc == null){
             res.send({status : false , reason : "incorrect username"});
@@ -104,6 +116,5 @@ module.exports.verifyUser = ( req , res ) =>{
         }
 
     });
-g
 
 }

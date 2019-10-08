@@ -25,6 +25,9 @@ router.route('/user/:username')
 router.route('/user/:username/:tripid')
     .get( userCtrl.acceptRequest );
 
+router.route('/reject/:username/:tripid')
+.get( userCtrl.rejectRequest );
+
 // bill apis
 
 // router.route('/bill/:tripid')
