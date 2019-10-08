@@ -85,3 +85,25 @@ module.exports.acceptRequest = ( req , res )=>{
         .catch( (err) => { res.send({ status : "error" , data : err }); } );
 
 };
+
+module.exports.verifyUser = ( req , res ) =>{
+
+    var username = req.params.username;
+    var password = req.params.password;
+
+    User.findOne({username}).populate('trips').exec( (err , doc)=>{
+
+        if ( err || doc == null){
+            res.send({status : false , reason : "incorrect username"});
+        }
+        else if ( doc.password == password ){
+            res.send({ status : true , data : doc });
+        }
+        else{
+            res.send({status : false});
+        }
+
+    });
+g
+
+}

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-	database	 = 'mongodb://localhost:27017/demodb'
+	database	 = 'mongodb://sanes4:sanes4ever@ds145194.mlab.com:45194/stroke-predict'
 	
 mongoose.connect(database , { useNewUrlParser: true });
 mongoose.connection.on('connected' , () =>{

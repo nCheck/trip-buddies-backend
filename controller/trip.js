@@ -86,3 +86,10 @@ module.exports.recommendPlace = ( req , res )=>{
     res.send( { data : matches } );
 
 }
+
+
+module.exports.getAllPlaces = ( req , res )=>{
+
+    res.send( { data : Places } );
+
+}

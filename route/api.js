@@ -9,6 +9,9 @@ const tripCtrl = require('../controller/trip');
 
 // user apis
 
+router.route('/verify/:username/:password')
+    .get(userCtrl.verifyUser);
+
 router.route('/user')
     .get( userCtrl.getAllUser )
     .post( userCtrl.addUser );
@@ -36,7 +39,10 @@ router.route('/trip/:username')
 
 
 router.route('/recommend')
-    .get( tripCtrl.recommendPlace )
+    .get( tripCtrl.recommendPlace );
+
+router.route('/places')
+    .get(tripCtrl.getAllPlaces);
 
 
 /*

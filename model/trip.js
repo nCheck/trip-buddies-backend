@@ -12,6 +12,10 @@ var tripSchema = new Schema({
         type : String,
         required : true
     } ,
+    img_url :{
+        type : String,
+        default : "https://cdn1.goibibo.com/t_tg_fs/mahabaleshwar-pratapgarh-fort-150117237847-orijgp.jpg"
+    },
     startDate : {
         type : Date,
         default : Date.now()
