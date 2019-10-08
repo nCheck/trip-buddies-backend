@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+    </style>
+    <title>Customer Crud</title>
+  </head>
+  <body>
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <div class="row">
+          <div class="col" style="text-align: center">
+              <h1>Welcome to Customer Database</h1>
+          </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <row>
+
+          <table style="width:100%">
+              <tr style="text-align:center">
+    
+                <th>
+                    Customer Id
+                </th>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Age
+                </th>
+                <th>
+                  Phone
+                </th>
+                <th>
+                    Rating
+                </th>
+                <th colspan="2">
+                  Operation
+                </th>
+
+    
+              </tr>
+            <% customers.forEach(function(customer){%>
+    
+              <form method="POST" action="/api/customer/<%= customer.customerId %>">
+
+                  <tr style="text-align:center">
+                      <td>
+                          <input type="text" name="customerId" value=<%= customer.customerId %> >
+                      </td>
+                      <td>
+                          <input type="text" name="name" value=<%= customer.name %> >
+                      </td>
+                      <td>
+                          <input type="text" name="age" value=<%= customer.age %> >
+                      </td>
+                      <td>
+                          <input type="text" name="phoneNo" value=<%= customer.phoneNo %>>
+                      </td>
+                      <td>
+                          <input type="text" name="ratimg" value=<%= customer.rating %>>
+                      </td>
+                      <td>
+                          <button type="submit"> Update </button>
+                      </td>
+                      <td>
+                          <a href="/api/customer/<%= customer.customerId%>/delete">
+                            <button type="button"> Delete </button>
+                          </a>
+                      </td>
+                    </tr>
+
+              </form>
+
+    
+              <%  })%>
+
+              <form method="POST" action="/api/customer/">
+
+                <tr style="text-align:center">
+                    <td>
+                        <input type="text" name="name"  >
+                    </td>
+                    <td>
+                        <input type="text" name="age" >
+                    </td>
+                    <td>
+                        <input type="text" name="phoneNo" >
+                    </td>
+                    <td>
+                        <input type="text" name="phoneNo">
+                    </td>
+                    <td>
+                        <input type="text" name="ratimg" >
+                    </td>
+                    <td colspan="2">
+                        <button type="submit"> Save </button>
+                    </td>
+                  </tr>
+
+            </form>
+
+            </table>
+
+      </row>
+
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
