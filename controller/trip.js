@@ -36,6 +36,23 @@ module.exports.addTrip = ( req , res )=>{
 
 };
 
+module.exports.deleteTrip = (req , res)=>{
+
+    var tripid = req.params.tripid;
+
+    Trip.deleteOne({_id : tripid}, (err , doc)=>{
+
+        if (err){
+            res.send({error : err});
+        }
+        else{
+            res.send({status : "success", data : doc})
+        }
+
+    })
+
+}
+
 // get all trips of a user
 
 module.exports.getTrips = ( req , res )=>{
