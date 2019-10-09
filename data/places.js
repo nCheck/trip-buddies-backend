@@ -9,10 +9,10 @@ const tags = {
 
 module.exports = [
     {
-        title: 'Dramatic Grand Canyon',
+        title: 'Dramatic Shimla',
         subtitle: 'For thrill seekers and adventurers',
-        illustration: 'https://lp-cms-production.imgix.net/features/2016/02/North-Rim-a3b3dc3e0432.jpg',
-        location : "Arizona",
+        illustration: 'https://ihpl.b-cdn.net/pictures/tourgallery/780/magnificent-shimla-manali-tour-5044.jpg',
+        location : "Shimla",
         tags : [ tags.landscape , tags.sightseeing , tags.adventure ]
     },
     {
@@ -26,7 +26,7 @@ module.exports = [
         title: 'Ajanta-Ellora, Maharashtra',
         subtitle: 'Ellora is a UNESCO World Heritage Site located in the Aurangabad district of Maharashtra, India. It is one of the largest rock-cut monastery-temple cave complexes in the world,',
         illustration: 'https://www.onacheaptrip.com/wp-content/uploads/Kailasa-Temple-at-Ellora-Caves-Aurangabad.jpg',
-        location : "Ellora",
+        location : "Aurangabad",
         tags : [ tags.sightseeing , tags.historical ]
     },
     {
@@ -40,7 +40,7 @@ module.exports = [
         title: 'Jog Falls, Shimoga',
         subtitle: 'Jog Falls located near Jog Village. Falling point of water is located in Siddapura, Uttara Kannada and the view point in Sagara Karnataka. ',
         illustration: 'https://static.toiimg.com/photo/51611253/.jpg',
-        location : "Shimoga",
+        location : "Karnataka",
         tags : [ tags.sightseeing , tags.adventure ]
     }
 ]

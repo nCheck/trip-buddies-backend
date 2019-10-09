@@ -41,7 +41,7 @@ router.route('/trip/:username')
     .post(tripCtrl.addTrip);
 
 
-router.route('/recommend')
+router.route('/recommend/:filter')
     .get( tripCtrl.recommendPlace );
 
 router.route('/places')

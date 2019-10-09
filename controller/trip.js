@@ -14,25 +14,27 @@ module.exports.addTrip = ( req , res )=>{
     var buddies = req.body.buddies;
     var creator = req.params.username;
 
-    Trip.create(data , (err  ,doc)=>{
+    console.log(data,  buddies, creator)
+    res.send({status : "done"});
+    // Trip.create(data , (err  ,doc)=>{
 
-        // requesting trips to the friends
-        User.updateMany( { username : { $in : buddies } } , { $push : { requests : doc._id } } , (err , usrs)=>{
+    //     // requesting trips to the friends
+    //     User.updateMany( { username : { $in : buddies } } , { $push : { requests : doc._id } } , (err , usrs)=>{
 
-            if (err){
-                res.send({ status : "error 1" , error : err });
-            }
-            else{
-                // adding trip to creator
-                User.update({ username : creator } , { $push : { trips  : doc._id } })
-                    .then( (fin)=>{ res.send({ status : "success" , data : fin }); } )
-                    .catch((errr)=>{ res.send({ status : "error 2" , error : errr }); });
+    //         if (err){
+    //             res.send({ status : "error 1" , error : err });
+    //         }
+    //         else{
+    //             // adding trip to creator
+    //             User.update({ username : creator } , { $push : { trips  : doc._id } })
+    //                 .then( (fin)=>{ res.send({ status : "success" , data : fin }); } )
+    //                 .catch((errr)=>{ res.send({ status : "error 2" , error : errr }); });
                 
-            }
+    //         }
 
-        });
+    //     });
 
-    });
+    // });
 
 };
 
@@ -74,20 +76,53 @@ module.exports.getTrips = ( req , res )=>{
 
 
 
+// module.exports.recommendPlace = ( req , res )=>{
+
+//     var recs = req.body.filters;
+//     var matches = []
+
+//     matcher = (plc , rec) => {
+
+//         for ( var r of rec ){
+//             if ( plc.some( (p) => { return p == r } ) )
+//             return true;
+//         }
+
+//         return false;
+
+//     }
+
+//     Places.forEach( (place) =>{
+
+//         if ( matcher(place.tags, recs) )
+//         {
+//             matches.push(place);
+//             console.log("matches currently", matches)
+//         }
+
+//     })
+
+//     res.send( { data : matches } );
+
+// }
+
+
 module.exports.recommendPlace = ( req , res )=>{
 
-    var recs = req.body.filters;
+    var recs = req.params.filter;
     var matches = []
 
     matcher = (plc , rec) => {
+        console.log(plc , rec);
 
-        for ( var r of rec ){
-            if ( plc.some( (p) => { return p == r } ) )
-            return true;
+        for (var p of plc)
+        {
+            if( p == rec ){
+                return true;
+            }
         }
 
-        return false;
-
+    return false;
     }
 
     Places.forEach( (place) =>{
@@ -95,7 +130,6 @@ module.exports.recommendPlace = ( req , res )=>{
         if ( matcher(place.tags, recs) )
         {
             matches.push(place);
-            console.log("matches currently", matches)
         }
 
     })
@@ -103,7 +137,6 @@ module.exports.recommendPlace = ( req , res )=>{
     res.send( { data : matches } );
 
 }
-
 
 module.exports.getAllPlaces = ( req , res )=>{
 
